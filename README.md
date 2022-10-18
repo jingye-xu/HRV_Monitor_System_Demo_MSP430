@@ -1,1 +1,1 @@
-# HRV_Monitor_System_Demo_MSP430
+# HRV monitoring system demo - MSP430 side
