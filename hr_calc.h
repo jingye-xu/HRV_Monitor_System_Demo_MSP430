@@ -16,7 +16,7 @@
 
 #define true 1
 #define false 0
-#define FS 12.5                  // sampling frequency 12.5,25,50,100
+#define FS 25                  // sampling frequency 12.5,25,50,100
 #define MIN_DISTANCE  (int)(FS/12.5*2)             // 12.5: 2,25: 4, 50:8, 100:16
 #define BUFFER_SIZE  (int)(FS*4)
 #define MA4_SIZE  4                         // DONOT CHANGE

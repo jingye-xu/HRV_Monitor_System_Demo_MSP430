@@ -53,9 +53,9 @@
 #define FRAM2_HRV_length  25600            // FRAM2 HRV data length 25600*4Byte = 100KB
 
 // need to change when frequency changes
-#define PERIOD_INT        (1000000/FS)     // period time depending on frequency of signal process
-#define PERIOD_WAIT       2000000          // period wait time after pressing buttons
-#define UCB2BW_VALUE      10               // fSCL = SMCLK/40 = ~100kHz
+#define PERIOD_INT        (8000000/FS)     // period time depending on frequency of signal process
+#define PERIOD_WAIT       8000000          // period wait time after pressing buttons
+#define UCB2BW_VALUE      80               // fSCL = SMCLK/UCB2BW_VALUE = ~100kHz
 
 #pragma PERSISTENT(HR_buff)                // store hr_buff in FRAM
 float HR_buff[8] = {0};
@@ -146,14 +146,17 @@ void main(void)
         {
             __delay_cycles(PERIOD_WAIT);   // set a delay to avoid pushing button repeatedly in a short time, will change to timer in the future
 
-            uart_tx_chars("start!    ", 10, 1);
+            uart_tx_chars("start!", 7, 1);
             initHRSensor();
 
             while(1)
             {
                 readFIFOHRSensor(&hr_red[index], &hr_ir[index]);
 
-//                if(hr_red[index] < 100000 || hr_ir[index] < 100000) uart_tx_chars("finger is not touched!", 23, 1);
+//                if(hr_red[index] < 100000 || hr_ir[index] < 100000){
+//                    uart_tx_chars("error!", 7, 1);
+//                    continue;
+//                }
 
                 index = (index + 1) % BUFFER_SIZE;          //increment hr raw data index
 
@@ -217,7 +220,7 @@ void main(void)
             }
             shutdownHRSensor();
 
-            uart_tx_chars("end!     ", 10, 1);
+            uart_tx_chars("end!", 5, 1);
         }
 	}
 //    __bis_SR_register(LPM0_bits + GIE);

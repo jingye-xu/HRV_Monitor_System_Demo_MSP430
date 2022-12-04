@@ -23,11 +23,11 @@
 #define CLK_MOD 0x4911                  // Microcontroller will "clean-up" clock signal
 
 // need to change when frequency changes
-#define CSCTL1_VALUE 0x0000             // Specifies frequency of DCO, bit6=1 for high, 0 for low
+#define CSCTL1_VALUE 0x0046             // Specifies frequency of DCO, bit6=1 for high, 0 for low
                                         // bit 3-1: 0:1/1, 1:2.67/5.33, 2:3.5/7, 3:4/8, 4:5.33/16
 #define CSCTL3_VALUE 0x0000             // use to specify clock source divider bit6-4 for SMCLK
                                         // 0:/1, 1:/2, 2:/4, 3:/8, 4:/16, 5:/32
-#define UCA0BRW_VALUE 13                // SMCLK/16/9600
+#define UCA0BRW_VALUE 52                // SMCLK/16/9600
 
 void uart_clock_signals(void);          //Select Clock Signals
 void assign_pins_to_uart(void);         // Used to Give UART Control of Appropriate Pins
