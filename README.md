@@ -7,6 +7,7 @@ This repository stores the core code for real-time heart rate variability (HRV) 
 ## Content
 
 [Introduction](README.md#introduction)
+
 [Usage](README.md#usage)
 
 ## Introduction
